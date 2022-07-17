@@ -1,0 +1,67 @@
+[tool.poetry]
+name = "User Provider Service"
+version = "0.1.0"
+description = "A simple API producer written in FastAPI to show how to do Consumer-driven Contract Testing."
+authors = ["Nefendi <28621696+Nefendi@users.noreply.github.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.79.0"
+uvicorn = {extras = ["standard"], version = "^0.18.2"}
+bcrypt = "^3.2.2"
+
+[tool.poetry.dev-dependencies]
+pact-python = "^1.5.2"
+pytest = "^7.1.2"
+black = "^22.6.0"
+flake8-bugbear = "^22.7.1"
+mypy = "^0.961"
+isort = "^5.10.1"
+pactman = "^2.30.0"
+types-requests = "^2.28.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck_out
+    | build
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+show_column_numbers = true
+ignore_missing_imports = true
+disallow_untyped_calls = true
+warn_return_any = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+warn_unused_configs  = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+strict_equality = true
+implicit_reexport = false
