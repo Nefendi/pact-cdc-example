@@ -1,0 +1,134 @@
+{
+  "consumer": {
+    "name": "User Consumer Service"
+  },
+  "interactions": [
+    {
+      "description": "a request to create a user",
+      "providerStates": [
+        {
+          "name": "the server allows to create users"
+        }
+      ],
+      "request": {
+        "body": {
+          "age": 42,
+          "job_title": "Software Developer",
+          "name": "John",
+          "password": "admin123",
+          "phone_number": "+48111222333",
+          "surname": "Doe",
+          "username": "John42"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "method": "POST",
+        "path": "/users"
+      },
+      "response": {
+        "body": {
+          "age": 42,
+          "id": "62d465da-604a-4ba7-8be4-7faf0c457005",
+          "job_title": "Software Developer",
+          "name": "John",
+          "phone_number": "+48111222333",
+          "surname": "Doe",
+          "username": "John42"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 201
+      }
+    },
+    {
+      "description": "a request to list all users",
+      "providerStates": [
+        {
+          "name": "there exists at least one user in the database"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/users"
+      },
+      "response": {
+        "body": [
+          {
+            "age": 42,
+            "id": "45c3be0f-0d0a-4274-ac03-627706986e78",
+            "name": "John",
+            "surname": "Doe",
+            "username": "John42"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "matchingRules": {
+          "body": {
+            "$": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 1
+                }
+              ]
+            },
+            "$[*].*": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "consumer": "0.9.5",
+      "mockserver": "0.9.1",
+      "models": "0.4.1"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "User Provider Service"
+  }
+}
