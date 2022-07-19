@@ -66,7 +66,6 @@ def pactman_provider_states(root_address, name, **params):
             age=28,
             job_title="Accountant",
             phone_number="+48999888777",
-            date_of_creation=datetime.utcnow(),
         )
 
         requests.post(root_address + "/users", json=user.dict())
